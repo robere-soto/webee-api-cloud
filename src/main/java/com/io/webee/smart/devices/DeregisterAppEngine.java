@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.io.webee.smart.datastore.CloudDatastore;
+import com.io.webee.smart.utils.Translator;
 
 @WebServlet(
     name = "DeregisterAppEngine",
@@ -15,7 +16,8 @@ import com.io.webee.smart.datastore.CloudDatastore;
 )
 public class DeregisterAppEngine extends HttpServlet {
 
-  private CloudDatastore cd = new CloudDatastore();
+  final static CloudDatastore cd = new CloudDatastore();
+  final static Translator tr = new Translator();
 	
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) 
@@ -24,8 +26,11 @@ public class DeregisterAppEngine extends HttpServlet {
     response.setContentType("text/plain");
     response.setCharacterEncoding("UTF-8");
 
-    response.getWriter().print("Deregister action\r\n" + request.getParameter("mac"));
-
+    cd.deregisterDevice(request.getParameter("mac"));
+    
+    response.getWriter().print(
+    		tr.PrintJsonResponse(
+    				cd.deregisterDevice(request.getParameter("mac"))));
   }
   
 }

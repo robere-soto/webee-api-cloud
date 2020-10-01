@@ -31,6 +31,11 @@
 
   <dependencies>
     <!-- Compile/runtime dependencies -->
+<dependency>
+    <groupId>com.googlecode.json-simple</groupId>
+    <artifactId>json-simple</artifactId>
+    <version>1.1.1</version>
+</dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -80,12 +85,24 @@
     <!-- for hot reload of the web application-->
     <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
     <plugins>
+    
+    <plugin>
+     <groupId>com.google.appengine</groupId>
+     <artifactId>appengine-maven-plugin</artifactId>
+     <version>1.9.80</version>
+     <configuration>
+         <enableJarClasses>false</enableJarClasses>
+         <port>8181</port>
+         <address>0.0.0.0</address>
+     </configuration>
+ </plugin>
+ 	<!--  
       <plugin>
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>appengine-maven-plugin</artifactId>
         <version>${appengine.maven.plugin.version}</version>
       </plugin>
-      
+      -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>

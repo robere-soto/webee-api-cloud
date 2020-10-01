@@ -40,5 +40,10 @@
 			<accessrule kind="nonaccessible" pattern="com/google/apphosting/**"/>
 		</accessrules>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Oracle/Middleware/Oracle_Home2/oracle_common/modules/thirdparty/jackson-databind-2.7.9.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://docs.oracle.com/javaee/6/api/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/webee-0.1.0-SNAPSHOT/WEB-INF/classes"/>
 </classpath>

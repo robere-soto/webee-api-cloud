@@ -1,4 +1,4 @@
-package com.io.webee.smart.datastore;
+package com.io.webee.smart.devices;
 
 import java.io.IOException;
 

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.io.webee.smart.datastore.CloudDatastore;
+import com.io.webee.smart.utils.Translator;
 
 @WebServlet(
     name = "QueryAppEngine",
@@ -15,19 +16,29 @@ import com.io.webee.smart.datastore.CloudDatastore;
 )
 public class QueryAppEngine extends HttpServlet {
 	
-  private CloudDatastore cd = new CloudDatastore();
+  final static CloudDatastore cd = new CloudDatastore();
+  final static Translator tr = new Translator();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws IOException {
 
-    response.setContentType("text/plain");
+    response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
-
-    System.out.print("test");
+ 
+    String responseCode = cd.readDevice(request.getParameter("mac"));
     
-    response.getWriter().print("Query action\r\n: " + cd.readDevice(request.getParameter("mac")));
-
+    try
+    {
+    	Integer.parseInt(responseCode);
+        response.getWriter().print(
+        		tr.PrintJsonResponse(responseCode));
+    }
+    catch (NumberFormatException e) {
+        response.getWriter().print(
+        		tr.PrintJsonResponse("0","Timestamp",responseCode));
+    }
+   
   }
   
 }

@@ -15,7 +15,7 @@ import com.io.webee.smart.datastore.CloudDatastore;
 )
 public class ListAppEngine extends HttpServlet {
 
-  private CloudDatastore cd = new CloudDatastore();
+  final static private CloudDatastore cd = new CloudDatastore();
 	
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 

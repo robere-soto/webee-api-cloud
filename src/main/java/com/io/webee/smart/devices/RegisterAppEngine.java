@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
 import com.io.webee.smart.datastore.CloudDatastore;
+import com.io.webee.smart.utils.Translator;
 
 @WebServlet(
     name = "RegisterAppEngine",
@@ -17,7 +18,8 @@ import com.io.webee.smart.datastore.CloudDatastore;
 )
 public class RegisterAppEngine extends HttpServlet {
 	
- private CloudDatastore cd = new CloudDatastore();
+ private final static CloudDatastore cd = new CloudDatastore();
+ private final static Translator tr = new Translator();
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) 
@@ -26,8 +28,9 @@ public class RegisterAppEngine extends HttpServlet {
     response.setContentType("text/plain");
     response.setCharacterEncoding("UTF-8");
 
-    response.getWriter().print("Register action: \r\n" + request.getParameter("mac") );    
-    cd.registerDevice(request.getParameter("mac"));
+    response.getWriter().print(    
+    		tr.PrintJsonResponse(
+    				cd.registerDevice(request.getParameter("mac"))));
   }
   
 }
