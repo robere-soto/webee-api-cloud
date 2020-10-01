@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "webee-api-cloud",
+  "private_key_id": "186d538387491a438eacd4c60433dbbd36a81b1b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDN9MYEDLWPlBgV\nDFoOelbM00Ys8SNreVJqEu0Cknq5nwpLP5AKdV2KL4jcsIF814bn+tkU4ro8ZXq3\nE1SPn2DpRrVKDbJpXLZZVMUYGIoP4vQzuaal9Kfnebom3QdhhAPfZb0s3MGHYmvx\nE9XHMDP1LIk6c7LIk/R68piTBeM07sr4OUwcIhqw9wX3byCytw9vxtUsdD4eW9+c\n1gB8OBnCfo1zGFKfqwPraTv5hjrZOcgXVo1w5/NfJB9YHenDjDcrPQUgzslfDsSJ\nudm4D226VyVqJy+yuAWJmYbKAM91XvhRZBEjgTSlHrC33EjCdIDVXa7o2JgUbF2/\nwMxLYdHbAgMBAAECggEACmpk5+gwomiN6I/tr1UWi1iVRZ6S+P4eDIk/0o/P2bqm\nTZ89oe8aN5Z8fb9bZ7yKm7QUQw8i9fz303G3JrrxBBB0XfYKs3Nh3BYCZbE6rN+r\nE+vr9pvvMIX3w7wNLIGoTyWZBz90IMGkeID/9bPasifPb3+nEf0Rhx+PrG0cIXK+\n38r/ueDSySxh3Y6RC47Oq+/ETd0JLcjY+wWUcEhCzOpA14ZLT2VnUJ5RPRFCbvDv\nqan5kf4FPHoUP8lpb8bvETUPNCu6OD4aBE1xBOXUc1uXHAe52sx8xLzBVLX3MsMn\n3kJyIzAlcJayDQYELTQOUwNzTRVpjPuP8Ef/S0tYqQKBgQDtBXRzVdWz3J6Tx/V3\nouSFD1TuQWwgRs3NU9TTaLF69xaxoFJ8dlc0pIKAjaoJVrbQCYEVIpklCCnDOOLr\nmDh7g9YA5quJe7IVU8X7Yc5Hs2GFpJgnC6z5Y7juQUoFSN3KvLAlwEkBExxwTsmC\nLwPG10Gt1lmCSmKvSd1eu70+TQKBgQDecoi9T/MctG6pmN/1Dn63lQL9/XCrvwrB\nX4qNC4q1J6b0/rzdHHnivWP5suH5Nj81ViIMZ12D+G/w0eM7C7UKw0a/9GUhj46q\nIhebHJfp+KQgEkVhl7+4WcShLLlEuUKxhtOpCmw9F2RtE7e4PmgWG/EIx+Dzdsoy\nMWgvb/n0xwKBgACcd/1oJkHterc018w0LlStgnGO16GJrTQvWCgnZ/XCN1vD5xKN\nF5J6Lh/4vYyCnbwRmjScvzpaOAlZ1zP2U4b2AxJDhgO3vvDRI3yPdwG2U7UNhJrt\nK8gE2tA6eN9knbXNIMMoKMgI7ZTYjyp3xpG3smKpX9e3K2P6U8jPwSAtAoGBAIXA\nvHOIVRfXbgrP/ymsU4kzMh9iepLqRh9LwVVZsUeH1h3N5eXVr3wkgK6tXq6obY02\ngzaOGG63vSdCLK1eNreH/0yAOSba2N93rFX59WYbuSQHmGw8AG1qnI6FA8lM08tG\n1JH50GdTX3Euv/Mqow9YMbAj7yC1NpLDnm+XluYVAoGAJRddQ2s5ruB2dTvuS3+f\nfwutCbiKoVqECMttj3Z9xNz0gMOWE00rixWMhdII3kOOyyySKh0nsBb2tG5AeTAF\n20mfn/uQ5YmenwEtBgecodHZ2avT9+QPp1JpdFZQCx1TXW1Zf1DdN7MJXh6434ti\nlHG5ztR2pUnuJJ6sqw+rOCc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "webee-api-devices@webee-api-cloud.iam.gserviceaccount.com",
+  "client_id": "116323200270939738756",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/webee-api-devices%40webee-api-cloud.iam.gserviceaccount.com"
+}
