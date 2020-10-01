@@ -66,7 +66,7 @@ public class CloudDatastore {
 		  
 		  for(Entry<String, Object> entry : map.entrySet()) {
 			  if(entry.getKey().equals("Timestamp"))
-				return (String) entry.getValue();
+				return ((com.google.cloud.Timestamp)entry.getValue()).toDate().toString();
 		  }   
 		}
 		

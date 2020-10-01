@@ -21,7 +21,7 @@ public class ListAppEngine extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws IOException {
 
-    response.setContentType("text/plain");
+    response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
 
     response.getWriter().print("List action 2\r\n");

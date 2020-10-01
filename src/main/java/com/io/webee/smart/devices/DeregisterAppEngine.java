@@ -23,7 +23,7 @@ public class DeregisterAppEngine extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) 
       throws IOException {
 
-    response.setContentType("text/plain");
+    response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
 
     cd.deregisterDevice(request.getParameter("mac"));
