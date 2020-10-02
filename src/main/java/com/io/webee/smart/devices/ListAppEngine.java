@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.io.webee.smart.datastore.CloudDatastore;
+import com.io.webee.smart.utils.Translator;
 
 @WebServlet(
     name = "ListAppEngine",
@@ -15,7 +16,8 @@ import com.io.webee.smart.datastore.CloudDatastore;
 )
 public class ListAppEngine extends HttpServlet {
 
-  final static private CloudDatastore cd = new CloudDatastore();
+  final static CloudDatastore cd = new CloudDatastore();
+  final static Translator tr = new Translator();
 	
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -23,8 +25,18 @@ public class ListAppEngine extends HttpServlet {
 
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
-
-    response.getWriter().print("List action 2\r\n");
+    
+    String responseContent = cd.listDevices();
+    
+    try
+    {
+    	Integer.parseInt(responseContent);
+        response.getWriter().print(
+        		tr.PrintJsonResponse(responseContent));
+    }
+    catch (NumberFormatException e) {
+        response.getWriter().print(responseContent);
+    }
 
   }
   

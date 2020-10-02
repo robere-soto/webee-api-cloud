@@ -21,13 +21,16 @@ import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import com.io.webee.smart.utils.Translator;
 
 public class CloudDatastore {
 
 	private Firestore db;
+	private Translator tr;
 	
 	public CloudDatastore(){
 
+		tr = new Translator();
 		// Use a service account
 		InputStream serviceAccount = null;
 		serviceAccount = this.getClass().getResourceAsStream("devices-db-ee7276c04b01.json");
@@ -35,7 +38,6 @@ public class CloudDatastore {
 		try {
 			credentials = GoogleCredentials.fromStream(serviceAccount);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		FirebaseOptions options = new FirebaseOptions.Builder()
@@ -73,6 +75,40 @@ public class CloudDatastore {
 	    return "3001";
 	}
 	
+	public String listDevices() {
+		
+		HashMap<String,String> results = new HashMap<String,String>();
+		
+		HashMap<String, Object> map = null;
+		// asynchronously retrieve all devices
+		ApiFuture<QuerySnapshot> query = db.collection("Devices").get();
+		
+		QuerySnapshot querySnapshot = null;
+		try {
+			querySnapshot = query.get();
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+			return "3000";
+		}
+		List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
+		for (QueryDocumentSnapshot document : documents) {	
+		  map = (HashMap<String, Object>) document.getData();	  
+		  String macAddress = null;
+		  String timestamp = null;  
+		  for(Entry<String, Object> entry : map.entrySet()) {
+			  if(entry.getKey().equals("MacAddress"))
+				macAddress = (String) entry.getValue();
+			  if(entry.getKey().equals("Timestamp"))
+				timestamp = ((com.google.cloud.Timestamp)entry.getValue()).toDate().toString();	  
+		  }
+		  results.put(macAddress,timestamp);
+		}
+		if (results.size() == 0)
+			return "3002";
+		
+		return tr.PrintJsonResponse(results); 
+	}
+	
 	public String deregisterDevice(String mac) {
 		
 		// asynchronously delete a document
@@ -82,10 +118,10 @@ public class CloudDatastore {
 			System.out.println("Update time : " + writeResult.get().getUpdateTime());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			return "3001";
+			return "3000";
 		} catch (ExecutionException e) {
 			e.printStackTrace();
-			return "3001";
+			return "3000";
 		}
 		
 		return "0";
@@ -106,13 +142,11 @@ public class CloudDatastore {
 		try {
 			System.out.println("Update time : " + result.get().getUpdateTime());
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "3001";
+			return "3000";
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "3001";
+			return "3000";
 		}
 		
 		return "0";

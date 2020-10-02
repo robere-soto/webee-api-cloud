@@ -25,6 +25,12 @@ public class DeregisterAppEngine extends HttpServlet {
 
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
+    
+    if(!tr.isValidMACAddress(request.getParameter("mac"))) {
+    	response.getWriter().print(
+        		tr.PrintJsonResponse("3003"));
+    	return;
+    }
 
     cd.deregisterDevice(request.getParameter("mac"));
     

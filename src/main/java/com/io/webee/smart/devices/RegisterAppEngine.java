@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.cloud.datastore.Datastore;
-import com.google.cloud.datastore.DatastoreOptions;
 import com.io.webee.smart.datastore.CloudDatastore;
 import com.io.webee.smart.utils.Translator;
 
@@ -27,7 +25,13 @@ public class RegisterAppEngine extends HttpServlet {
 
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
-
+    
+    if(!tr.isValidMACAddress(request.getParameter("mac"))) {
+    	response.getWriter().print(
+        		tr.PrintJsonResponse("3003"));
+    	return;
+    }
+    
     response.getWriter().print(    
     		tr.PrintJsonResponse(
     				cd.registerDevice(request.getParameter("mac"))));
